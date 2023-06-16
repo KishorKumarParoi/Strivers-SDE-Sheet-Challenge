@@ -3,7 +3,7 @@
 
 // 14-06-23
 #include <bits/stdc++.h>
-            
+
 #define endl "\n"
 #define int long long
 #define sz(s) (int)s.size()
@@ -28,7 +28,11 @@ void solve(){
   string s; cin >> s;
   int n = s.size();
 
-  map<char,int>mp;
+  if(n == 0){
+    cout << 0 << endl;
+  }
+
+  unordered_map<char,int>mp;
 
   int i = 0, j = 0, ans = 0;
   
