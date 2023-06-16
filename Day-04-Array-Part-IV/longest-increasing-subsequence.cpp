@@ -1,8 +1,8 @@
 // Let's Begin Mara Khawa ^+^
 // author : @I_Love_My_Sherniii
 
-// 15-06-23
-#include <bits/stdc++.h>
+// 16-06-23
+#include "bits/stdc++.h"
             
 #define endl "\n"
 #define int long long
@@ -24,37 +24,30 @@ const int N   = 1e6 + 5;
 const int MOD = 1e9 + 7;
 
 void solve(){
-	int n; cin >> n;
-	vector<int>v(n);
-	for(int i = 0; i < n; ++i){
-		cin >> v[i];
-	}
+  int n; cin >> n;
+  vector<int>arr(n);
+  for(int i = 0; i < n; ++i){
+  	cin >> arr[i];
+  }
 
-	unordered_set<int>st;
-	for(int x : v){
-		st.insert(x);
-	}
+  vector<int>tmp;
+  int len = 1;
+  tmp.push_back(arr[0]);
 
-	print(st)
 
-	int maxLen = 1, k = 1;
-	for(int i = 0; i < n; ++i){
+  for(int i = 0; i < n; ++i){
+  	if(tmp.back() < arr[i]){
+  		tmp.push_back(arr[i]);
+  		len++;
+  	}
+  	else{
+  		// int *a = &*std::lower_bound(x.begin(), x.end(),temp1);
+  		int ind = lower_bound(tmp.begin(), tmp.end(), arr[i]) - tmp.begin();
+  		tmp[ind] = arr[i];
+  	}
+  }
 
-		if(st.find(v[i] - 1) != st.end())
-			continue;
-
-		if(st.find(v[i] + k) != st.end()){
-			int cnt = 1;
-			// d(v[i])
-			while(st.find(v[i] + (k++)) != st.end()){
-				cnt++;
-			}
-			// dl(cnt)
-			k = 1;
-			maxLen = max(maxLen, cnt);
-		}
-	}
-  cout << maxLen << endl;
+  cout << len << endl;
 }
 
 int32_t main(){
