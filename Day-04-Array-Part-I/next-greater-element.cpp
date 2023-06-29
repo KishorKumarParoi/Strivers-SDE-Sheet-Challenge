@@ -1,9 +1,9 @@
 // Let's Begin Mara Khawa ^+^
 // author : @I_Love_My_Sherniii
 
-// 26-06-23
+// 27-06-23
 #include <bits/stdc++.h>
-
+            
 #define endl "\n"
 #define int long long
 #define sz(s) (int)s.size()
@@ -23,50 +23,57 @@ using namespace std;
 const int N   = 1e6 + 5;
 const int MOD = 1e9 + 7;
 
-// ll kthSmallestProduct(vector<int>& nums1, vector<int>& nums2, ll k) {
-//   ll l = -1e10, r = 1e10;
-//   ll ans;
-//   while (l <= r) {
-//     ll m = (l+r) / 2;
-    
-//     ll cnt = 0;
-//     for (int x : nums1) {
-//       if (x == 0) cnt += (m >= 0) * size(nums2);
-//       else if (x > 0) cnt += upper_bound(all(nums2), m / x - (m < 0 && m % x)) - begin(nums2);
-//       else cnt += end(nums2) - lower_bound(all(nums2), m / x + (m < 0 && m % x));
-//     }
-//     if (cnt < k) l = m+1;
-//     else ans = m, r = m-1;
-//   }
-//   return ans;
-// }
-
-
 void solve(){
-  int n, m, k; cin >> n >> m >> k;
-  vector<int>a(n),b(m);
-
+  int n; cin >> n; 
+  vector<int>v(n);
   for(int i = 0; i < n; ++i){
-  	cin >> a[i];
+  	cin >> v[i];
   }
 
-  for(int i = 0; i < m; ++i){
-  	cin >> b[i];
-  }
+  deque<int>q;
+  q.push_back(0);
+  vector<int>ans(n, 0);
+  unordered_map<int,int>mp;
+  mp[v[0]] = 0;
+  
+  for(int i = 1; i < n; ++i){
 
-  int l = -1e10, r = 1e10;
-  int ans;
-
-  while(l <= r){
-  	int m = (l + r) >> 1;
-
-  	int cnt = 0;
-
-  	for(int x : a){
-  		if(x == 0)
-  			cnt += (m >= 0) * 
+  	if(q.empty()){
+  		q.push_back(i);
+  		continue;
   	}
+
+  	while(!q.empty() and v[q.back()] < v[i]){
+  		// d(q.back()) d(v[q.back()]) dl(v[i])
+
+  		ans[q.back()] = v[i];
+  		mp[v[i]] = q.back();
+
+  		q.pop_back();
+  	}
+
+  	q.push_back(i);
   }
+
+  while(!q.empty()){
+  	ans[q.back()] = -1;
+  	mp[v[q.back()]] = -1;
+  	q.pop_back();
+  }
+
+  vector<int>nums = {2, 4};
+  print(nums)
+  print(ans)
+
+  vector<int>a;
+
+  PRINT(mp)
+
+  for(int i = 0; i < nums.size(); ++i){
+  	a.push_back(mp[nums[i]]);
+  }
+
+  print(a)
 }
 
 int32_t main(){
