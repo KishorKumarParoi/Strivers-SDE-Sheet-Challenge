@@ -1,0 +1,3 @@
+- I want to solve 500 problems in Leetcode
+- Becoming a Purple Coder in Codeforces
+- 6\* Coder in Codechef
