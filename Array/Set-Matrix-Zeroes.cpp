@@ -29,9 +29,52 @@ using namespace std;
 const int N = 2e5 + 5;
 const int MOD = 1e9 + 7;
 
+void OptimizedSetZeroes(vector<vector<int>>& mat) {
+    int row = mat.size();
+    int col = mat[0].size();
+    int col0 = 1;
+
+    // int COL[col] = {0}; mat[0][...]
+    // int ROW[row] = {0}; mat[...][0]
+
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (mat[i][j] == 0) {
+                if (j == 0)
+                    col0 = 0;
+                else
+                    mat[0][j] = 0;
+                mat[i][0] = 0;
+            }
+        }
+    }
+
+    for (int i = 1; i < row; ++i) {
+        for (int j = 1; j < col; ++j) {
+            if (mat[0][j] == 0 || mat[i][0] == 0) {
+                mat[i][j] = 0;
+            }
+        }
+    }
+
+    if (mat[0][0] == 0) {
+        for (int j = 0; j < col; ++j) {
+            mat[0][j] = 0;
+        }
+    }
+
+    if (col0 == 0) {
+        for (int i = 0; i < row; ++i) {
+            mat[i][0] = 0;
+        }
+    }
+}
+
 void setZeroes(vector<vector<int>>& mat) {
     vector<int>rowZero;
     vector<int>colZero;
+
+    int col0 = 1;
 
     int row = mat.size();
     int col = mat[0].size();
