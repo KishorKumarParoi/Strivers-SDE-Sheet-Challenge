@@ -7,5 +7,16 @@
     "prompt-sync": "^4.2.0",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4"
-  }
+  },
+  "name": "strivers-sde-sheet-challenge",
+  "description": "- I want to solve 500 problems in Leetcode - Becoming a Purple Coder in Codeforces - 6\\* Coder in Codechef",
+  "version": "1.0.0",
+  "main": "node.js",
+  "scripts": {
+    "start": "cat input.txt | node test.js > output.txt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

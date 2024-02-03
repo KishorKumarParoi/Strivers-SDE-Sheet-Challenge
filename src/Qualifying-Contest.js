@@ -2,9 +2,7 @@
 process.stdin.resume();
 process.stdin.setEncoding("utf-8");
 
-function print(x) {
-    console.log(x);
-}
+
 let inputString = "";
 let currentLine = 0;
 
