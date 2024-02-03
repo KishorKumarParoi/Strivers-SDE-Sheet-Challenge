@@ -58,27 +58,39 @@ let setZeroes = function (matrix) {
         }
     }
 
+    if (matrix[0][0] === 0) {
+        for (let j = 0; j < col; j++) {
+            matrix[0][j] = 0;
+        }
+    }
+
     if (col0 === 0) {
         for (let i = 0; i < row; i++) {
             matrix[i][0] = 0;
         }
     }
 
-    if (matrix[0][0] === 0) {
-        for (let j = 0; j < col; j++) {
-            matrix[0][j] = 0;
-        }
+
+    for (let i = 0; i < matrix.length; ++i) {
+        console.log(matrix[i]);
     }
+    console.log("");
 }
 
 const main = () => {
     // Start your code from here 
-    const t = readline();
-    const k = readline();
-    const p = readline();
-    console.log(t);
-    console.log(k);
-    console.log(p);
+    let testKase = parseInt(readline());
+    while (testKase--) {
+        // row col
+        let input = readline().split(" ").map(Number);
+        let [row, col] = input;
 
+        let matrix = [];
 
+        for (let i = 0; i < row; ++i) {
+            input = readline().split(" ").map(Number);
+            matrix.push(input);
+        }
+        setZeroes(matrix);
+    }
 }
