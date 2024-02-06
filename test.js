@@ -28,69 +28,208 @@ const readline = () => {
     return inputString[currentLine++];
 }
 
-let setZeroes = function (matrix) {
-    const row = matrix.length;
-    const col = matrix[0].length;
+function printPattern(n) {
+    /*
+   * * * * * 
+   * * * * * 
+   * * * * * 
+   * * * * * 
+   * * * * * 
+   */
 
-    let col0 = 1;
-    // const dummyCol = matrix[0][...];
-    // const dummyRow = matrix[...][0];
+    // for (let i = 0; i < n; i++) {
+    //     let stars = "";
+    //     for (let j = 0; j < n; j++) {
+    //         stars += "* ";
+    //     }
+    //     console.log(stars);
+    // }
 
-    for (let i = 0; i < row; i++) {
-        for (let j = 0; j < col; j++) {
-            if (matrix[i][j] === 0) {
-                if (j === 0) {
-                    col0 = 0;
-                } else {
-                    matrix[0][j] = 0;
-                }
+    /*
+    * 
+    * * 
+    * * * 
+    * * * * 
+    * * * * * 
+    */
 
-                matrix[i][0] = 0;
-            }
-        }
+    // for (let i = 0; i < n; i++) {
+    //     let stars = "";
+    //     for (let j = 0; j <= i; j++) {
+    //         stars += "* ";
+    //     }
+    //     console.log(stars);
+    // }
+
+    /*
+    1 
+    1 2 
+    1 2 3 
+    1 2 3 4 
+    1 2 3 4 5 
+    */
+
+    // for (let i = 0; i < n; i++) {
+    //     let val = 1;
+    //     let stars = '';
+    //     for (let j = 0; j <= i; j++) {
+    //         stars += `${val++} `;
+    //     }
+    //     console.log(stars);
+    // }
+
+    /*
+    1 
+    2 2 
+    3 3 3 
+    4 4 4 4 
+    5 5 5 5 5 
+    */
+
+    // let val = 1;
+    // for (let i = 0; i < n; i++) {
+    //     let stars = '';
+    //     for (let j = 0; j <= i; j++) {
+    //         stars += `${val} `;
+    //     }
+    //     val++;
+    //     console.log(stars);
+    // }
+
+    /*
+    * * * * * 
+    * * * * 
+    * * * 
+    * * 
+    * 
+    */
+
+    // for (let i = 0; i < n; i++) {
+    //     let stars = "";
+    //     for (let j = n - 1; j >= i; j--) {
+    //         stars += "* ";
+    //     }
+    //     console.log(stars);
+    // }
+
+    /*
+    1 2 3 4 5 
+    1 2 3 4 
+    1 2 3 
+    1 2 
+    1 
+    */
+
+    // for (let i = 0; i < n; i++) {
+    //     let val = 1;
+    //     let stars = '';
+    //     for (let j = n; j > i; j--) {
+    //         stars += `${val++} `;
+    //     }
+    //     console.log(stars);
+    // }
+
+    /*
+        * 
+       * * 
+      * * * 
+     * * * * 
+    * * * * * 
+    
+    */
+
+    // for (let i = 0; i < n; i++) {
+    //     let spaces = "";
+    //     for (let j = n - i - 1; j > 0; j--)
+    //         spaces += " ";
+
+    //     let stars = spaces;
+    //     for (let j = 0; j <= i; j++)
+    //         stars += "* ";
+    //     console.log(stars);
+    // }
+
+    /*
+            * 
+          * * * 
+        * * * * * 
+      * * * * * * * 
+    * * * * * * * * * 
+    
+    */
+
+    // for (let i = 0; i < n; i++) {
+    //     let spaces = "";
+    //     for (let j = n - i - 1; j > 0; j--)
+    //         spaces += "  ";
+
+    //     let stars = spaces;
+    //     for (let j = 0; j < 2 * i + 1; j++)
+    //         stars += "* ";
+    //     console.log(stars);
+    // }
+
+    /*
+      * * * * * * * * * 
+        * * * * * * * 
+          * * * * * 
+            * * * 
+              * 
+    */
+
+
+    // for (let i = 0; i < n; i++) {
+    //     let spaces = "";
+    //     for (let j = 0; j <= i; j++)
+    //         spaces += "  ";
+
+    //     let stars = spaces;
+    //     for (let j = n * 2 - i - 1; j > i; j--)
+    //         stars += "* ";
+    //     console.log(stars);
+    // }
+
+    /*
+              * 
+            * * * 
+          * * * * * 
+        * * * * * * * 
+      * * * * * * * * * 
+    * * * * * * * * * * * 
+      * * * * * * * * * 
+        * * * * * * * 
+          * * * * * 
+            * * * 
+              * 
+    */
+
+    for (let i = 0; i <= n; i++) {
+        let spaces = "";
+        for (let j = n - i - 1; j >= 0; j--)
+            spaces += "  ";
+
+        let stars = spaces;
+        for (let j = 0; j < 2 * i + 1; j++)
+            stars += "* ";
+        console.log(stars);
     }
 
-    for (let i = 1; i < row; i++) {
-        for (let j = 1; j < col; j++) {
-            if (matrix[0][j] === 0 || matrix[i][0] === 0) {
-                matrix[i][j] = 0;
-            }
-        }
+    for (let i = 0; i < n; i++) {
+        let spaces = "";
+        for (let j = 0; j <= i; j++)
+            spaces += "  ";
+
+        let stars = spaces;
+        for (let j = n * 2 - i - 1; j > i; j--)
+            stars += "* ";
+        console.log(stars);
     }
 
-    if (matrix[0][0] === 0) {
-        for (let j = 0; j < col; j++) {
-            matrix[0][j] = 0;
-        }
-    }
-
-    if (col0 === 0) {
-        for (let i = 0; i < row; i++) {
-            matrix[i][0] = 0;
-        }
-    }
-
-
-    for (let i = 0; i < matrix.length; ++i) {
-        console.log(matrix[i]);
-    }
-    console.log("");
 }
+
 
 const main = () => {
     // Start your code from here 
-    let testKase = parseInt(readline());
-    while (testKase--) {
-        // row col
-        let input = readline().split(" ").map(Number);
-        let [row, col] = input;
-
-        let matrix = [];
-
-        for (let i = 0; i < row; ++i) {
-            input = readline().split(" ").map(Number);
-            matrix.push(input);
-        }
-        setZeroes(matrix);
-    }
+    let n = parseInt(readline());
+    printPattern(n);
 }
