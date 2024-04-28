@@ -326,15 +326,15 @@ function printPattern(n) {
   
   */
 
-  for (let i = 0; i < n; i++) {
-    let val = 65;
-    let stars = '';
-    for (let j = n; j > i; j--) {
-      stars += String.fromCharCode(val);
-      val++;
-    }
-    console.log(stars);
-  }
+  // for (let i = 0; i < n; i++) {
+  //   let val = 65;
+  //   let stars = '';
+  //   for (let j = n; j > i; j--) {
+  //     stars += String.fromCharCode(val);
+  //     val++;
+  //   }
+  //   console.log(stars);
+  // }
 
 }
 
