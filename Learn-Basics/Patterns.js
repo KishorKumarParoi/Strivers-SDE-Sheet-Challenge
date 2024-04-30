@@ -336,6 +336,189 @@ function printPattern(n) {
   //   console.log(stars);
   // }
 
+  /*
+ A
+ BB
+ CCC
+ DDDD
+ EEEEE
+ FFFFFF
+ */
+
+  // let val = 65;
+  // for (let i = 0; i < n; i++) {
+  //   let stars = '';
+  //   for (let j = 0; j <= i; j++) {
+  //     stars += String.fromCharCode(val);
+  //   }
+  //   val++;
+  //   console.log(stars);
+  // }
+
+  /*
+
+   A
+  ABA
+ ABCBA
+ABCDCBA
+ABCDEDCBA
+ABCDEFEDCBA
+
+for (let i = 0; i < n; i++) {
+  let val = 65;
+  let chars = '';
+  // space
+  for (let j = 0; j < (n - i - 1); j++) {
+    print(' ')
+  }
+  for (let j = 0; j < i; j++) {
+    chars += String.fromCharCode(val++);
+  }
+  for (let j = 2 * (i + 1) - 1 - (i + 1); j >= 0; j--) {
+    chars += String.fromCharCode(val--);
+  }
+  console.log(chars);
+}
+
+*/
+
+
+  /* 
+F 
+F E 
+F E D 
+F E D C 
+F E D C B 
+F E D C B A 
+
+  //  console.log(String.fromCharCode(val));
+
+  for (let i = 0; i < n; i++) {
+    let val = 65 + n - 1;
+    let chars = '';
+    for (let j = 0; j <= i; j++) {
+      chars += String.fromCharCode(val--) + " ";
+    }
+    console.log(chars);
+  }
+  */
+
+  /*
+  * * * * * * * * * * * * 
+  * * * * *     * * * * * 
+  * * * *         * * * * 
+  * * *             * * * 
+  * *                 * * 
+  *                     * 
+  *                     * 
+  * *                 * * 
+  * * *             * * * 
+  * * * *         * * * * 
+  * * * * *     * * * * * 
+  * * * * * * * * * * * * 
+  
+  
+  
+    for (let i = 0; i < n; i++) {
+      let stars = '';
+      for (let j = i; j < n; j++) {
+        stars += '* ';
+      }
+      // space
+      for (let j = 0; j < i; j++) {
+        stars += '    ';
+      }
+      for (let j = i; j < n; j++) {
+        stars += '* ';
+      }
+      console.log(stars);
+    }
+    for (let i = 0; i < n; i++) {
+      let stars = '';
+      for (let j = 0; j <= i; j++) {
+        stars += '* ';
+      }
+      for (let j = n - i - 2; j >= 0; j--) {
+        stars += '    ';
+      }
+      for (let j = 0; j <= i; j++) {
+        stars += '* ';
+      }
+      console.log(stars);
+    }
+    */
+
+
+  /*
+*          *
+**        **
+***      ***
+****    ****
+*****  *****
+************
+*****  *****
+****    ****
+***      ***
+**        **
+*          *
+
+
+  for (let i = 0; i < n; i++) {
+    let stars = '';
+    for (let j = 0; j <= i; j++) {
+      stars += '*';
+    }
+    for (let j = n - i - 1; j > 0; j--) {
+      stars += '  ';
+    }
+    for (let j = 0; j <= i; j++) {
+      stars += '*';
+    }
+    console.log(stars);
+  }
+
+  for (let i = 1; i < n; i++) {
+    let stars = '';
+    for (let j = n - i; j > 0; j--) {
+      stars += '*';
+    }
+    for (let j = 0; j < i; j++) {
+      stars += '  ';
+    }
+    for (let j = n - i; j > 0; j--) {
+      stars += '*';
+    }
+    console.log(stars);
+  }
+
+*/
+
+  /*
+  ******
+  
+  *    *
+  
+  *    *
+  
+  *    *
+  
+  *    *
+  
+  ******
+  
+
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if (i === 0 || j === 0 || i === n - 1 || j === n - 1) {
+        print('*');
+      } else {
+        print(' ');
+      }
+    }
+    console.log("\n");
+  }
+  */
+
 }
 
 
