@@ -530,17 +530,53 @@ F E D C B A
   }
   */
 
+  // [stars, space, stars]
 
-  for (let k = 0; k < n; k++) {
-    for (let i = 0; i < k; i++) {
-      for (let j = 0; j < k; j++) {
-        print("* ");
-      }
-      console.log("\n");
+  /*
+4 4 4 4 4 4 4 
+
+4 3 3 3 3 3 4 
+
+4 3 2 2 2 3 4 
+
+4 3 2 1 2 3 4 
+
+4 3 2 2 2 3 4 
+
+4 3 3 3 3 3 4 
+
+4 4 4 4 4 4 4 
+*/
+  let data = Array.from(Array(2 * n - 1), () => new Array(2 * n - 1).fill('#'));
+
+  for (let i = 0; i < 2 * n - 1; i++) {
+    for (let j = 0; j < 2 * n - 1; j++) {
+      print(data[i][j] + " ");
+    }
+    console.log("\n");
+  }
+
+  for (let i = 0; i < 2 * n - 1; i++) {
+    for (let j = 0; j < 2 * n - 1; j++) {
+      let first = distance(i, j, i, 0);
+      let second = distance(i, j, 0, j);
+      let third = distance(i, j, 2 * n - 2, j);
+      let fourth = distance(i, j, i, 2 * n - 2);
+      let minimum = Math.min(first, second, third, fourth);
+      data[i][j] = (-1) * minimum + n;
     }
   }
 
-  console.log("kishor");
+  for (let i = 0; i < 2 * n - 1; i++) {
+    for (let j = 0; j < 2 * n - 1; j++) {
+      print(data[i][j] + " ");
+    }
+    console.log("\n");
+  }
+}
+
+const distance = (x1, y1, x2, y2) => {
+  return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 
