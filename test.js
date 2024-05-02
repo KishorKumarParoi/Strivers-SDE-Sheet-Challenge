@@ -3,7 +3,7 @@ Author : @Kishor_Paroi
 Github: KishorKumarParoi
 Date: 2024-05-02
 Time: 12:35:14
-Problem: Selection-Sort
+Problem: bubble-Sort
 Link: 
 */
 "use strict"
@@ -31,22 +31,23 @@ const main = () => {
   // Start your code from here 
   const n = Number(readline());
   const arr = readline().split(" ").map(Number);
-  console.log('Before Selection Sort: ', arr);
+  console.log('Before bubble Sort: ', arr);
 
+  // bubble sort
   for (let i = 0; i < n - 1; i++) {
-    let minIndex = i;
+    let swapped = false;
     for (let j = i + 1; j < n; j++) {
-      if (arr[j] < arr[minIndex]) {
-        minIndex = j;
+      if (arr[j] < arr[i]) {
+        swapped = true;
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
       }
     }
-    if (minIndex !== i) {
-      let temp = arr[i];
-      arr[i] = arr[minIndex];
-      arr[minIndex] = temp;
+    if (!swapped) {
+      break;
     }
   }
-
-  console.log('After Selection Sort: ', arr);
-  printLine(process);
+  console.log('After bubble Sort: ', arr);
+  console.log('Time taken: ', process.uptime() + 's');
 }
