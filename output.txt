@@ -1,3 +1,1 @@
-Before bubble Sort:  [ 1, 10, 3, 2, 5 ]
-After bubble Sort:  [ 1, 2, 3, 5, 10 ]
-Time taken:  0.020519542s
+1
