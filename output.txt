@@ -1,7 +1,4 @@
-largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
-largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
-largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
-largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
-largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
-largest : 2 slargest : 1 smallest : 1 ssmallest : 2
-1 2 
+i : 1
+false
+i : 2
+true
