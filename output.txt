@@ -1,1 +1,5 @@
-1 2 3 3 4 4 5 6 7 9 
+3 3
+10 3
+Max Frequency: 3 Element: 3
+Min Frequency: 3 Element: 3
+3 3 
