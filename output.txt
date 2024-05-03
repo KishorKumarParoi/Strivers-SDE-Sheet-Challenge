@@ -1,5 +1,7 @@
-3 3
-10 3
-Max Frequency: 3 Element: 3
-Min Frequency: 3 Element: 3
-3 3 
+largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
+largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
+largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
+largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
+largest : 1 slargest : -2147483648 smallest : 1 ssmallest : 2147483647
+largest : 2 slargest : 1 smallest : 1 ssmallest : 2
+1 2 
