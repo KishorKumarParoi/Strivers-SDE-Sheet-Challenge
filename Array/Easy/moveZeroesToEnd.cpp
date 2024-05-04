@@ -38,6 +38,7 @@ void moveZeroes(vector<int>& nums) {
     for (int i = 0; i < n; i++) {
         if (nums[i] != 0) {
             nums[index] = nums[i];
+            // swap(nums[index], nums[i]); optimized 
             index++;
         }
     }
@@ -45,6 +46,29 @@ void moveZeroes(vector<int>& nums) {
     for (int i = index; i < n; i++) {
         nums[i] = 0;
     }
+
+    // complexity
+    // Time: O(n) + O(n-index) = O(2*n -index)
+    // Space: O(1)
+}
+
+void optimizeMoveZeroes(vector<int>& nums) {
+    ios_base::sync_with_stdio(!cin.tie(nullptr));
+    int n = nums.size();
+    if (n == 1)
+        return;
+
+    int index = 0;
+    for (int i = 0; i < n; i++) {
+        if (nums[i] != 0) {
+            swap(nums[index], nums[i]);
+            index++;
+        }
+    }
+
+    // complexity
+    // Time: O(n)
+    // Space: O(1)
 }
 
 void solve() {
