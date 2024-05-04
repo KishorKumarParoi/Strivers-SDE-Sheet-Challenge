@@ -3,7 +3,8 @@
     "iostream": "cpp",
     "ostream": "cpp",
     "vector": "cpp",
-    "__locale": "cpp"
+    "__locale": "cpp",
+    "iosfwd": "cpp"
   },
   "C_Cpp.formatting": "vcFormat"
 }
