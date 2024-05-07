@@ -1,2 +1,2 @@
-ele : 5 cnt : 1
-5
+break_point : -1 arr[break_point] : 5140143968
+1 2 3 
