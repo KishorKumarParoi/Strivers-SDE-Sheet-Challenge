@@ -5,7 +5,7 @@ Github: KishorKumarParoi
 Date: 2024-05-07
 Time: 16:25:20
 Problem: Longest Consequtive
-Link:
+Link: https://leetcode.com/problems/longest-consecutive-sequence/
 */
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast")
@@ -61,7 +61,7 @@ int longestConsecutive(vector<int>& a) {
 int OptimumlongestConsecutive(vector<int>& a) {
     // TC : O(n) + O(n + n)
     // SC : O(n)
-    
+
     ios_base::sync_with_stdio(!cin.tie(nullptr));
     int n = a.size(), longest = 1;
     if (n == 0) return 0;
