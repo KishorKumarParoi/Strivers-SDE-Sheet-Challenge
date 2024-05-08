@@ -4,7 +4,8 @@
     "ostream": "cpp",
     "vector": "cpp",
     "__locale": "cpp",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "ios": "cpp"
   },
   "C_Cpp.formatting": "vcFormat",
   "C_Cpp.errorSquiggles": "disabled"
