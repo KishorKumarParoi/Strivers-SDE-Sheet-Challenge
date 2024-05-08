@@ -1,2 +1,5 @@
-break_point : -1 arr[break_point] : 5140143968
-1 2 3 
+row : 4 col : 4
+0 0 0 1 
+0 0 0 0 
+0 0 0 0 
+0 0 0 0 
