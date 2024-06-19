@@ -65,6 +65,10 @@ Node<int>* LinkedListTraversalFromArray(vector<int>& arr, int n) {
 }
 
 void printLinkedList(Node<int>* head) {
+    if (head == NULL) {
+        return;
+    }
+
     Node<int>* temp = head;
     while (temp) {
         cout << temp->data << " ";
@@ -74,6 +78,10 @@ void printLinkedList(Node<int>* head) {
 }
 
 int LengthOfLinkedList(Node<int>* head) {
+    if (head == NULL) {
+        return 0;
+    }
+
     Node<int>* temp = head;
     int length = 0;
 
@@ -85,6 +93,10 @@ int LengthOfLinkedList(Node<int>* head) {
 }
 
 bool searchElementInLinkedList(Node<int>* head, int target) {
+    if (head == NULL) {
+        return head;
+    }
+
     Node<int>* temp = head;
     int length = 0;
 
@@ -100,6 +112,9 @@ bool searchElementInLinkedList(Node<int>* head, int target) {
 
 
 Node<int>* removesHead(Node<int>* head) {
+    if (head == NULL) {
+        return head;
+    }
     Node<int>* temp = head;
     head = head->next;
     delete temp;
@@ -107,14 +122,29 @@ Node<int>* removesHead(Node<int>* head) {
 }
 
 Node<int>* removesTail(Node<int>* head) {
+    // if there is no element
+    if (head == NULL) {
+        // cout << "jj" << endl;
+        return head;
+    }
+
+    //  if there is only one element
     Node<int>* temp = head;
+    if (temp->next == NULL) {
+        delete temp;
+        return NULL;
+    }
+
     while (temp->next->next != NULL) {
         temp = temp->next;
     }
+    // standing at before the last element
+    // disconnect it from the last element by making it's next pointer null
     temp->next = NULL;
 
+    // returing new tail
     Node<int>* tail = temp;
-    return tail; // new tail
+    return tail;
 }
 
 void solve() {
@@ -127,10 +157,11 @@ void solve() {
     Node<int>* head = LinkedListTraversalFromArray(arr, n);
     cout << head->data << endl;
     head = removesHead(head);
-    Node<int>* tail = removesTail(head);
-    cout << "tail : " << tail->data << endl;
-    printLinkedList(head);
-    cout << LengthOfLinkedList(head) << endl;
+    cout << head << endl;
+    // Node<int>* tail = removesTail(head);
+    // cout << "tail : " << tail->data << endl;
+    // printLinkedList(head);
+    // cout << LengthOfLinkedList(head) << endl;
     // cout << searchElementInLinkedList(head, 1) << endl;
 }
 
