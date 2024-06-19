@@ -66,6 +66,47 @@ public:
 
 };
 
+Node<int>* deleteKthElement(Node<int>* head, int k) {
+    // if there is no element
+    if (head == NULL) {
+        return head;
+    }
+
+    // if there is only one element
+    if (head->next == NULL) {
+        if (k == 1) {
+            delete head;
+        }
+        return NULL;
+    }
+
+    // if there is more than one element
+    Node<int>* temp = head;
+    int cnt = 1;
+
+    if (k == 1) {
+        head = head->next;
+        delete temp;
+        return head;
+    }
+
+    while (temp) {
+        if (cnt < k) {
+            temp = temp->next;
+            cnt++;
+        }
+        else if (cnt == k) {
+            temp->prev->next = temp->next;
+            return head;
+        }
+    }
+
+    // if k is greater than length
+    // returns at it is
+
+    return head;
+}
+
 Node<int>* convertToDoublyLinkedList(vector<int>& arr, int n) {
     Node<int>* head = new Node(arr[0]);
     Node<int>* prev = head;
@@ -80,8 +121,6 @@ Node<int>* convertToDoublyLinkedList(vector<int>& arr, int n) {
 }
 
 void printDoublyLinkedList(Node<int>* head) {
-    cout << head->data << " " << head->next << endl;
-
     while (head) {
         cout << head->data << " ";
         head = head->next;
@@ -97,6 +136,8 @@ void solve() {
     }
 
     Node<int>* head = convertToDoublyLinkedList(arr, n);
+    printDoublyLinkedList(head);
+    head = deleteKthElement(head, 1);
     printDoublyLinkedList(head);
 }
 
