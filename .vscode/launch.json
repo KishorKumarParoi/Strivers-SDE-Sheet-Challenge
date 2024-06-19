@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "demo",
+      "request": "launch",
+      "mainClass": "Java.demo",
+      "projectName": "Strivers-SDE-Sheet-Challenge_b2eb1e86"
+    }
+  ]
+}
