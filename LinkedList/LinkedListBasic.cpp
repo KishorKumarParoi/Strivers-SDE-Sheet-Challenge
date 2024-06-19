@@ -226,6 +226,12 @@ Node<int>* deleteElement(Node<int>* head, int target) {
 }
 
 Node<int>* insertKthPos(Node<int>* head, int k, int val) {
+    if (head == NULL) {
+        if (k == 1)
+            return new Node(val);
+        return head;
+    }
+
     if (k == 1) {
         Node<int>* temp = new Node(val);
         temp->next = head;
@@ -291,7 +297,7 @@ void solve() {
     printLinkedList(head);
     head = insertKthPos(head, 7, 100);
     printLinkedList(head);
-    head = insertKthPos(head, 9, 100);
+    head = insertKthPos(head, 91, 100);
     printLinkedList(head);
 }
 
