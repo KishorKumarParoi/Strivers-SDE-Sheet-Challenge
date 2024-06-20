@@ -189,15 +189,19 @@ Node<int>* reverseDoublyLinkedList(Node<int>* head) {
         return head;
     }
 
-    Node<int>* temp = head;
+    Node<int>* current = head;
+    Node<int>* temp = NULL;
 
-    while (temp) {
-        swap(temp->front, temp->back);
-        if (temp->back == NULL) break;
-        temp = temp->back;
+    while (current) {
+        temp = current->front;
+        current->front = current->back;
+        current->back = temp;
+        // swap(temp->front, temp->back);
+        if (current->back == NULL) break;
+        current = current->back;
     }
 
-    head = temp;
+    head = current;
     return head;
 }
 
