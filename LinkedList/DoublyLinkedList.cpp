@@ -120,6 +120,101 @@ Node<int>* convertToDoublyLinkedList(vector<int>& arr, int n) {
     return head;
 }
 
+Node<int>* InsertAtKthPosition(Node<int>* head, int k, int val) {
+    /* Cases:
+       1. no element (k == 1, k > 1)
+       2. only single element (k == 1, k == 2, k > 2)
+       3. more than one element
+          1. insert at before first pos (k = 1)
+          2. insert after last pos (k = length + 1, k > length + 1)
+          3. insert at middle (k = 1...length)
+    */
+
+    // if there is no element
+    if (head == NULL) {
+        // if k = 1 then returns New Node 
+        if (k == 1) {
+            head = new Node(val);
+        }
+        // else it is impossible as i.e. k=3 impossible
+        return head;
+    }
+
+    // if there is only one element
+    if (head->next == NULL) {
+        if (k == 1) {
+            Node<int>* temp = new Node(val);
+            temp->next = head;
+            head->prev = temp;
+            return temp; //new head
+        }
+        else if (k == 2) {
+            Node<int>* temp = new Node(val);
+            head->next = temp;
+            temp->prev = head;
+            return head;
+        }
+        else {
+            return head;
+        }
+    }
+
+    // if there is more than one element
+    int cnt = 1;
+    Node<int>* temp = head;
+    Node<int>* prev = NULL;
+
+    // beginning insertion
+    if (k == 1) {
+        Node<int>* newNode = new Node(val);
+        newNode->next = temp;
+        newNode->prev = NULL;
+        temp->prev = newNode;
+        return newNode;
+    }
+
+    while (temp->next != NULL) {
+        if (cnt < k) {
+            prev = temp;
+            temp = temp->next;
+            cnt++;
+        }
+        else if (cnt == k) {
+            Node<int>* newNode = new Node(val);
+            newNode->next = temp;
+            newNode->prev = prev;
+            prev->next = newNode;
+            temp->prev = newNode;
+            return head;
+        }
+    }
+
+    // cout << temp->data << " " << temp->next << endl;
+    // cout << prev->data << " " << prev->next << endl;
+
+    d(cnt) dl(k);
+    // insert before last element
+    if (k == cnt) {
+        Node<int>* newNode = new Node(val);
+        newNode->next = temp;
+        newNode->prev = prev;
+        prev->next = newNode;
+        temp->prev = newNode;
+        return head;
+    }
+
+    // insert after last element
+    if (k - 1 == cnt) {
+        Node<int>* newNode = new Node(val);
+        newNode->prev = temp;
+        temp->next = newNode;
+        return head;
+    }
+
+    //  if k > cnt + 1
+    return head;
+}
+
 void printDoublyLinkedList(Node<int>* head) {
     while (head) {
         cout << head->data << " ";
@@ -137,7 +232,9 @@ void solve() {
 
     Node<int>* head = convertToDoublyLinkedList(arr, n);
     printDoublyLinkedList(head);
-    head = deleteKthElement(head, 1);
+    // head = deleteKthElement(head, 1);
+    // printDoublyLinkedList(head);
+    head = InsertAtKthPosition(head, 2, 100);
     printDoublyLinkedList(head);
 }
 
