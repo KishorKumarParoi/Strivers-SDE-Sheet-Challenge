@@ -35,70 +35,103 @@ class Node {
 public:
     T data;
     Node<T>* next;
-    Node<T>* prev;
+    Node<T>* back;
 
 public:
-    Node(T data1, Node<T>* next1, Node<T>* prev1) {
+    Node(T data1, Node<T>* next1, Node<T>* back1) {
         this->data = data1;
         this->next = next1;
-        this->prev = prev1;
+        this->back = back1;
     }
     Node(T data1, Node<T>* next1) {
         this->data = data1;
         this->next = next1;
-        this->prev = nullptr;
+        this->back = nullptr;
     }
-    Node(T data1, nullptr_t, Node<T>* prev1) {
+    Node(T data1, nullptr_t, Node<T>* back1) {
         this->data = data1;
         this->next = nullptr;
-        this->prev = prev1;
+        this->back = back1;
     }
     Node(T data1) {
         this->data = data1;
         this->next = nullptr;
-        this->prev = nullptr;
+        this->back = nullptr;
     }
     Node() {
         this->data = 0;
         this->next = nullptr;
-        this->prev = nullptr;
+        this->back = nullptr;
     }
 
 };
 
 Node<int>* deleteKthElement(Node<int>* head, int k) {
+    /* Cases:
+       1. no element (return NULL)
+       2. only single element
+          1. k == 1 -> return NULL after deleting head
+          2. k >= 2 -> return head
+       3. more than one element
+          1. delete at last position -> return head as it is
+          2. delete at first position -> change head to head->next
+          3. delete at middle positiion -> change temp and prev node
+
+       *** k could be minus and more than length of linkedlist
+    */
+
     // if there is no element
-    if (head == NULL) {
-        return head;
+    if (head == NULL || k < 0) {
+        return NULL;
     }
 
     // if there is only one element
     if (head->next == NULL) {
         if (k == 1) {
             delete head;
+            return NULL;
         }
-        return NULL;
+        else {
+            return head;
+        }
     }
 
     // if there is more than one element
-    Node<int>* temp = head;
-    int cnt = 1;
 
+    // at first position
     if (k == 1) {
+        Node<int>* temp = head;
         head = head->next;
         delete temp;
         return head;
     }
 
-    while (temp) {
+    // at middle position
+
+    int cnt = 1;
+    Node<int>* temp = head;
+    Node<int>* prev = NULL;
+
+    while (temp->next != NULL) {
         if (cnt < k) {
+            prev = temp;
             temp = temp->next;
             cnt++;
         }
         else if (cnt == k) {
-            temp->prev->next = temp->next;
+            Node<int>* toBeDeletedNode = temp;
+            prev->next = temp->next;
+            temp = temp->next;
+            temp->back = prev;
+            delete toBeDeletedNode;
             return head;
         }
+    }
+
+    // last element to be deleted
+    if (cnt == k) {
+        prev->next = NULL;
+        delete temp;
     }
 
     // if k is greater than length
@@ -145,13 +178,13 @@ Node<int>* InsertAtKthPosition(Node<int>* head, int k, int val) {
         if (k == 1) {
             Node<int>* temp = new Node(val);
             temp->next = head;
-            head->prev = temp;
+            head->back = temp;
             return temp; //new head
         }
         else if (k == 2) {
             Node<int>* temp = new Node(val);
             head->next = temp;
-            temp->prev = head;
+            temp->back = head;
             return head;
         }
         else {
@@ -168,8 +201,8 @@ Node<int>* InsertAtKthPosition(Node<int>* head, int k, int val) {
     if (k == 1) {
         Node<int>* newNode = new Node(val);
         newNode->next = temp;
-        newNode->prev = NULL;
-        temp->prev = newNode;
+        newNode->back = NULL;
+        temp->back = newNode;
         return newNode;
     }
 
@@ -182,9 +215,9 @@ Node<int>* InsertAtKthPosition(Node<int>* head, int k, int val) {
         else if (cnt == k) {
             Node<int>* newNode = new Node(val);
             newNode->next = temp;
-            newNode->prev = prev;
+            newNode->back = prev;
             prev->next = newNode;
-            temp->prev = newNode;
+            temp->back = newNode;
             return head;
         }
     }
@@ -197,16 +230,16 @@ Node<int>* InsertAtKthPosition(Node<int>* head, int k, int val) {
     if (k == cnt) {
         Node<int>* newNode = new Node(val);
         newNode->next = temp;
-        newNode->prev = prev;
+        newNode->back = prev;
         prev->next = newNode;
-        temp->prev = newNode;
+        temp->back = newNode;
         return head;
     }
 
     // insert after last element
     if (k - 1 == cnt) {
         Node<int>* newNode = new Node(val);
-        newNode->prev = temp;
+        newNode->back = temp;
         temp->next = newNode;
         return head;
     }
@@ -232,8 +265,8 @@ void solve() {
 
     Node<int>* head = convertToDoublyLinkedList(arr, n);
     printDoublyLinkedList(head);
-    // head = deleteKthElement(head, 1);
-    // printDoublyLinkedList(head);
+    head = deleteKthElement(head, 1);
+    printDoublyLinkedList(head);
     head = InsertAtKthPosition(head, 2, 100);
     printDoublyLinkedList(head);
 }
