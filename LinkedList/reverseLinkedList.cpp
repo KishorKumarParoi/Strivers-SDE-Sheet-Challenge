@@ -97,6 +97,16 @@ Node<int>* reverseList(Node<int>* head) {
     return prev;
 }
 
+Node<int>* recursionReverseList(Node<int>* head) {
+    if (head == NULL || head->next == NULL)
+        return head;
+
+    Node<int>* newHead = recursionReverseList(head->next);
+    Node<int>* front = head->next;
+    front->next = head;
+    head->next = NULL;
+    return newHead;
+}
 
 void solve() {
     int n; cin >> n;
@@ -106,7 +116,7 @@ void solve() {
     }
 
     Node<int>* head = LinkedListTraversalFromArray(arr, n);
-    head = reverseList(head);
+    head = recursionReverseList(head);
     printLinkedList(head);
 }
 
