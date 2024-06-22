@@ -130,6 +130,47 @@ Node<int>* reverseLinkedList(Node<int>* head) {
     return prev;
 }
 
+Node<int>* recursiveReverseLinkedList(Node<int>* head) {
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    Node<int>* newHead = recursiveReverseLinkedList(head->next);
+
+    // fun part of recursion
+    Node<int>* front = head->next;
+    head->next = NULL;
+    front->next = head;
+
+    return newHead;
+}
+
+int addHelper(Node<int>* temp) {
+    // Time Complexity : O(N)
+    // Space Complexity : O(N)
+
+    if (temp == NULL)
+        return 9;
+
+    int carry = addHelper(temp->next);
+    int sum = temp->data + carry;
+    temp->data = sum % 10;
+    return sum / 10;
+}
+
+Node<int>* recursiveAddOne(Node<int>* head) {
+    // ultimate carry
+    int carry = addHelper(head);
+    if (carry) {
+        Node<int>* newNode = new Node(carry);
+        newNode->next = head;
+        head = newNode;
+    }
+    return head;
+}
+
+
+
 Node<int>* AddOne(Node<int>* head) {
     // time complexity : O(3N)
     // space complexity : O(1)
@@ -161,8 +202,7 @@ Node<int>* AddOne(Node<int>* head) {
         ans->next = new Node(carry);
         ans = ans->next;
     }
-
-    return reverseLinkedList(ansHead);
+    return ansHead;
 }
 
 void solve() {
@@ -173,7 +213,7 @@ void solve() {
     }
 
     Node<int>* head = LinkedListTraversalFromArray(arr, n);
-    head = AddOne(head);
+    head = recursiveAddOne(head);
     printLinkedList(head);
 }
 
