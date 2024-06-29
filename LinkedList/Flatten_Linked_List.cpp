@@ -183,6 +183,49 @@ Node<int>* flattenLinkedList(Node<int>* head) {
 
     return mergeTwoLists(head, mergeHead);
 }
+Node<int>* PriorityQueueflattenLinkedList(Node<int>* head) {
+    // edge case
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+
+    priority_queue < pair<int, Node<int>* >,
+        vector < pair<int, Node<int>* >>,
+        greater<pair<int, Node<int>* >>> pq;
+
+    Node<int>* temp = head;
+
+    // horizontal Length of linked List     = K
+    // vertical length of Linked List (avg) = N
+    // TC : O(K * logK) + O(N * K * * 3 * logK)
+    // SC : O(k)
+    
+    while (temp) {
+        pq.push({ temp->data, temp }); // logK
+        temp = temp->next;
+    }
+
+    Node<int>* dummyNode = new Node(-1LL);
+    temp = dummyNode;
+
+    int limit = 10;
+
+    // O(N * K)
+    while (!pq.empty()) {
+        auto it = pq.top(); // logK
+        pq.pop(); // logK
+
+        if (it.second->child) {
+            pq.push({ it.second->child->data, it.second->child }); // logK
+        }
+        temp->next = it.second;
+        temp = temp->next;
+
+        // cout << "length : " << pq.size() << endl;
+        // cout << it.first << " " << it.second << endl;
+    }
+    return dummyNode->next;
+}
 
 void solve() {
     int n; cin >> n;
@@ -214,7 +257,8 @@ void solve() {
 
     // printLinkedList(start->next);
 
-    Node<int>* ansHead = flattenLinkedList(start->next);
+    // Node<int>* ansHead = flattenLinkedList(start->next);
+    Node<int>* ansHead = PriorityQueueflattenLinkedList(start->next);
     Node<int>* temp = ansHead;
     while (temp) {
         cout << temp->data << " ";

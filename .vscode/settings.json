@@ -9,7 +9,8 @@
     "ios": "cpp",
     "array": "cpp",
     "string": "cpp",
-    "string_view": "cpp"
+    "string_view": "cpp",
+    "queue": "cpp"
   },
   "C_Cpp.formatting": "vcFormat",
   "C_Cpp.errorSquiggles": "disabled"
