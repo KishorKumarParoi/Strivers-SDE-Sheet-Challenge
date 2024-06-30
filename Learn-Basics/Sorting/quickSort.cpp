@@ -48,9 +48,28 @@ int partition(vector<int>& arr, int low, int high) {
     return j;
 }
 
+int partitionIndex(vector<int>& arr, int low, int high) {
+    int pivot = arr[low];
+    int prev = low;
+    int i = low + 1;
+
+    while (i <= high) {
+        if (arr[i] < pivot) {
+            swap(arr[prev + 1], arr[i]);
+            prev++;
+        }
+        i++;
+    }
+
+    swap(arr[prev], arr[low]);
+    // cout << "prev : " << arr[prev] << endl;
+    return prev;
+}
+
 void qs(vector<int>& arr, int low, int high) {
     if (low < high) {
-        int pIndex = partition(arr, low, high);
+        int pIndex = partitionIndex(arr, low, high);
+        // print(arr);
         qs(arr, low, pIndex - 1);
         qs(arr, pIndex + 1, high);
     }
