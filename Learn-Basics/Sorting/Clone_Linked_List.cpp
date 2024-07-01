@@ -79,10 +79,54 @@ void printLinkedList(Node<int>* head) {
     }
     cout << endl;
 }
+void insertCopyInBetween(Node<int>* head) {
+    Node<int>* temp = head;
 
-Node<int>* insertCopyInBetween(Node<int>* head) {
+    while (temp) {
+        // store the next node
+        Node<int>* nextNode = temp->next;
+        // 1 -> 3
+        // 1 -> new Node -> 3
+        // update temp->next with new node
+        Node<int>* copy = new Node(temp->data);
+        copy->next = nextNode;
+        temp->next = copy;
 
+        temp = nextNode;
+    }
 }
+
+void connectRandomPointers(Node<int>* head) {
+    Node<int>* temp = head;
+
+    while (temp) {
+        Node<int>* copyNode = temp->next;
+        if (temp->random)
+            copyNode->random = temp->random;
+        else
+            copyNode->random = NULL;
+        // temp->next->random = temp->random;
+        temp = temp->next->next;
+    }
+}
+
+
+Node<int>* getDeepCopyList(Node<int>* head) {
+    Node<int>* copyNode = new Node(-1);
+    Node<int>* ansHead = copyNode;
+    Node<int>* temp = head;
+
+    while (temp) {
+        copyNode->next = temp->next;
+        copyNode = copyNode->next;
+
+        temp->next = temp->next->next;
+        temp = temp->next;
+    }
+
+    return ansHead->next;
+}
+
 
 Node<int>* copyRandomList(Node<int>* head) {
     insertCopyInBetween(head);
