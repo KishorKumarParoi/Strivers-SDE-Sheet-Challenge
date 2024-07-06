@@ -15,7 +15,8 @@
     "deque": "cpp",
     "list": "cpp",
     "valarray": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "set": "cpp"
   },
   "C_Cpp.formatting": "vcFormat",
   "C_Cpp.errorSquiggles": "disabled"
