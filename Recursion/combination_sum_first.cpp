@@ -59,6 +59,10 @@ void printK(int index, int sum, int K, int n, vector<vector<int>>& res, vector<i
     return;
 }
 
+// TC : 2^(t) * K (t is greater than n as same element can be picked or not picked many times)
+// K -> Array size for operation 
+// SC : K * X (size of combination) hypothetical
+
 vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
     vector<int>ans;
     vector<vector<int>>res;
