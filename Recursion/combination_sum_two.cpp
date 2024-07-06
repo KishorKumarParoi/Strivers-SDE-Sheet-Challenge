@@ -4,8 +4,8 @@ Author : @Kishor_Paroi
 Github: KishorKumarParoi
 Date: 2024-07-06
 Time: 13:44:59
-Problem: Combination Sum I
-Link: https://leetcode.com/problems/combination-sum/description/
+Problem: Combination Sum II
+Link: https://leetcode.com/problems/combination-sum-ii/description/
 */
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast")
@@ -29,42 +29,34 @@ using namespace std;
 const int N = 2e5 + 5;
 const int MOD = 1e9 + 7;
 
-void printK(int index, int sum, int K, int n, vector<vector<int>>& res, vector<int>& ans, vector<int>& arr) {
-    // if sum > K break the code
-    if (sum > K)
-        return;
-    // if index geos bigger than n then return
-    if (index > n)
-        return;
 
-    // if index == n then maybe sum equal to target(K) value
+vector<vector<int>> printK(int index, int sum, int K, int n, vector<vector<int>>& res, vector<int>& ans, vector<int>& arr) {
+
+    if (sum > K)
+        return res;
+
+    if (index > n)
+        return res;
+
     if (index == n) {
         if (sum == K) {
             res.push_back(ans);
         }
-        return;
+        return res;
     }
 
-    // pick same element
+
     sum += arr[index];
     ans.push_back(arr[index]);
-    printK(index, sum, K, n, res, ans, arr);
+    printK(index + 1, sum, K, n, res, ans, arr);
 
-    // not pick same element and move to next element
     sum -= arr[index];
     ans.pop_back();
     printK(index + 1, sum, K, n, res, ans, arr);
 
-    // if none found return
-    return;
-}
-
-vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
-    vector<int>ans;
-    vector<vector<int>>res;
-    printK(0, 0, target, candidates.size(), res, ans, candidates);
     return res;
 }
+
 
 void solve() {
     int n; cin >> n;
@@ -72,9 +64,9 @@ void solve() {
     for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
-
-    vector<vector<int>>res = combinationSum(arr, 7);
-    // printK(0, 0, 7, n, res, ans, arr);
+    vector<int>ans;
+    vector<vector<int>>res;
+    printK(0, 0, 7, n, res, ans, arr);
     cout << "Ans : " << res.size() << endl;
 
     for (auto x : res) {
