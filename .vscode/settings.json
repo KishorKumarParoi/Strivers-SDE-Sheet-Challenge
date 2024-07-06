@@ -10,7 +10,12 @@
     "array": "cpp",
     "string": "cpp",
     "string_view": "cpp",
-    "queue": "cpp"
+    "queue": "cpp",
+    "__split_buffer": "cpp",
+    "deque": "cpp",
+    "list": "cpp",
+    "valarray": "cpp",
+    "variant": "cpp"
   },
   "C_Cpp.formatting": "vcFormat",
   "C_Cpp.errorSquiggles": "disabled"
