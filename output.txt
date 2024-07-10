@@ -1,12 +1,3 @@
-i : 4 sign : -1 ans : 0
-i : 5 sign : -1 ans : -2
-i : 6 sign : -1 ans : -21
-i : 7 sign : -1 ans : -214
-i : 8 sign : -1 ans : -2147
-i : 9 sign : -1 ans : -21474
-i : 10 sign : -1 ans : -214748
-i : 11 sign : -1 ans : -2147483
-i : 12 sign : -1 ans : -21474836
-i : 13 sign : -1 ans : -214748364
-i : 14 sign : -1 ans : -2147483648
--2147483648
+217720174
+217720174
+12005
