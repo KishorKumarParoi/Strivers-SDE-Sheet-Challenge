@@ -29,7 +29,43 @@ using namespace std;
 const int N = 2e5 + 5;
 const int MOD = 1e9 + 7;
 
+int recursive(int i, int n, int sign, string s, long ans) {
+    if (ans < INT_MIN)
+        return INT_MIN;
 
+    if (ans > INT_MAX)
+        return INT_MAX;
+
+    if (i >= n || s[i] < '0' || s[i] > '9')
+        return ans;
+
+    if (sign > 0)
+        ans = ans * 10 + (s[i] - '0');
+    else
+        ans = ans * 10 - (s[i] - '0');
+
+    // d(i) d(sign) dl(ans);
+
+    return recursive(i + 1, n, sign, s, ans);
+}
+int myAtoiRecursive(string s) {
+    int n = s.size();
+    long ans = 0;
+    int i = 0, sign = 1;
+
+    while (s[i] == ' ') i++;
+
+    if (s[i] == '-') {
+        sign = -1;
+        i++;
+    }
+
+    else if (s[i] == '+') {
+        i++;
+    }
+
+    return recursive(i, n, sign, s, ans);
+}
 
 int myAtoi(string s) {
     int n = s.size();
@@ -82,8 +118,8 @@ int myAtoi(string s) {
 }
 
 void solve() {
-    string s = "  +02147483648";
-    cout << myAtoi(s) << endl;
+    string s = "   -02147483648";
+    cout << myAtoiRecursive(s) << endl;
 }
 
 int32_t main() {
