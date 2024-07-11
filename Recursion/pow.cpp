@@ -13,7 +13,7 @@ Link: https://leetcode.com/problems/powx-n/description/
 #pragma GCC optimization("unroll-loops")
 
 #define endl "\n"
-#define int long long
+// #define int long long
 #define sz(s) (int)s.size()
 #define all(v)                            v.begin(),v.end()
 #define TEST                              int tc;cin>>tc; while(tc--)
@@ -29,8 +29,28 @@ using namespace std;
 const int N = 2e5 + 5;
 const int MOD = 1e9 + 7;
 
-void solve() {
+double recursiveBinExpo(double a, long int b, double res) {
+    if (!b)
+        return res;
 
+    if (b & 1)
+        res *= a;
+    a *= a;
+    b >>= 1;
+    return recursiveBinExpo(a, b, res);
+}
+
+double myPow(double x, int n) {
+    if (n == 0)
+        return 1;
+    if (n < 0) {
+        return 1.00 / recursiveBinExpo(x, n * (-1L), 1L);
+    }
+    return recursiveBinExpo(x, n * 1L, 1L);
+}
+
+void solve() {
+    cout << myPow(-2, -3) << endl;
 }
 
 int32_t main() {
