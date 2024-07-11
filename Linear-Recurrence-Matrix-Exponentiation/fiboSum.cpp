@@ -27,7 +27,7 @@ Link: https://www.spoj.com/problems/FIBOSUM/
 using namespace std;
 
 const int mod = 1e9 + 7;
-const int sz = 2;
+const int sz = 3;
 
 struct Mat {
     int m[sz][sz];
@@ -86,9 +86,40 @@ int fiboSum(int n) {
     return (res.m[0][0] + res.m[0][1]) % mod;
 }
 
+int fibSum(int n) {
+    // base case
+    if (n <= 0)
+        return 0;
+    if (n == 1)
+        return 1;
+    // if (n == 2)
+    //     return 2;
+
+    // n > 2
+    Mat res;
+    res.identity();
+    Mat T;
+
+    T.m[0][0] = T.m[0][1] = T.m[0][2] = T.m[1][1] = T.m[1][2] = T.m[2][1] = 1;
+
+    int temp = n - 1;
+
+    while (temp) {
+        if (temp & 1)
+            res = res * T;
+        T = T * T;
+        temp >>= 1;
+    }
+
+    // cout << "n : " << n << " -> ";
+    // cout << res.m[0][0] << " " << res.m[0][1] << " " << res.m[0][2] << endl;
+    // return (res.m[0][0] * 2 + res.m[0][1] + res.m[0][2]) % mod;
+    return (res.m[0][0] + res.m[0][1]) % mod;
+}
+
 void solve() {
     int n, m; cin >> n >> m;
-    cout << (fiboSum(m + 2) - fiboSum(n + 1) + mod) % mod << endl;
+    cout << (fibSum(m) - fibSum(n - 1) + mod) % mod << endl;
 }
 
 int32_t main() {
